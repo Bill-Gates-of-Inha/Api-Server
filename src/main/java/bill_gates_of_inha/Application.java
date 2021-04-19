@@ -1,4 +1,4 @@
-package Bill.Gates.of.Inha;
+package bill_gates_of_inha;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
