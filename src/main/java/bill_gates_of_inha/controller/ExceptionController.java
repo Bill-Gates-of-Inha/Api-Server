@@ -1,9 +1,7 @@
 package bill_gates_of_inha.controller;
 
 import bill_gates_of_inha.dto.ResponseDto;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 

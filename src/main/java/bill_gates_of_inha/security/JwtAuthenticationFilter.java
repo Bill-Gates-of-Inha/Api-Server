@@ -1,6 +1,5 @@
 package bill_gates_of_inha.security;
 
-import bill_gates_of_inha.service.TokenService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
