@@ -32,6 +32,7 @@ public class User extends Date implements UserDetails {
     private String address;
 
     @ElementCollection(fetch = FetchType.EAGER)
+    @Builder.Default
     private List<String> roles = new ArrayList<>();
 
     @Override
