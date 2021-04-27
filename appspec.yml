@@ -10,3 +10,10 @@ permissions:
     pattern: "**"
     owner: ubuntu
     group: ubuntu
+
+hooks:
+  ApplicationStart:
+    - location: scripts/run.sh
+    - timeout: 180
+    - runas: ubuntu
+
