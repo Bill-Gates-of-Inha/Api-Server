@@ -1,19 +1,19 @@
 package bill_gates_of_inha.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class TokenRepository {
-    private final StringRedisTemplate redisTemplate;
+    private final StringRedisTemplate tokenRedisTemplate;
     private final ValueOperations<String, String> valueOperations;
-
-    @Autowired
-    public TokenRepository(StringRedisTemplate redisTemplate) {
-        this.redisTemplate = redisTemplate;
-        this.valueOperations = this.redisTemplate.opsForValue();
+    
+    public TokenRepository(@Qualifier(value = "tokenRedisTemplate") StringRedisTemplate tokenRedisTemplate) {
+        this.tokenRedisTemplate = tokenRedisTemplate;
+        this.valueOperations = this.tokenRedisTemplate.opsForValue();
     }
 
     public void set(String accessToken, String refreshToken) {
@@ -25,6 +25,6 @@ public class TokenRepository {
     }
 
     public void delete(String accessToken) {
-        redisTemplate.delete(accessToken);
+        tokenRedisTemplate.delete(accessToken);
     }
 }
