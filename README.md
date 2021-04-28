@@ -3,6 +3,6 @@
 ## 빌게이츠팀의 서버임니다
 
 ### PROD / DEV 
-MySQL
+DB: MySQL,Redis
 ### TEST
 H2

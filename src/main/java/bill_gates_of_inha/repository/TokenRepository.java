@@ -27,4 +27,8 @@ public class TokenRepository {
     public void delete(String accessToken) {
         tokenRedisTemplate.delete(accessToken);
     }
+
+    public void deleteAll() {
+        tokenRedisTemplate.getConnectionFactory().getConnection().flushDb();
+    }
 }
