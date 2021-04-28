@@ -59,4 +59,7 @@ public class User extends Date implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private final List<Record> records = new ArrayList<>();
 }
