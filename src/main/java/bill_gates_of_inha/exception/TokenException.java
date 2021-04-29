@@ -6,7 +6,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class TokenException {
     public static class Expired extends ResponseStatusException {
         public Expired() {
-            super(HttpStatus.CONFLICT, "refreshToken이 만료되었습니다.");
+            super(HttpStatus.UNAUTHORIZED, "refreshToken이 만료되었습니다.");
         }
     }
 

@@ -38,10 +38,10 @@ public class AuthController {
     }
 
     @PostMapping("/api/auth/re")
-    public ResponseDto.Ok regenerateToken(@RequestBody TokenDto.Token req) {
+    public ResponseDto.Created regenerateToken(@RequestBody TokenDto.Token req) {
         TokenDto.Token tokenDto = tokenService.regenerateToken(req);
 
-        return new ResponseDto.Ok(tokenDto, "재발급");
+        return new ResponseDto.Created(tokenDto, "재발급");
     }
 
     @GetMapping(value = "/api/auth/exception/forbidden")
