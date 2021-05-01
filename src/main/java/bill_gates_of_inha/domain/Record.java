@@ -17,8 +17,6 @@ public class Record extends Date{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String name;
-    @Column(nullable = false)
     private Double weight;
     @Column(nullable = false)
     private Long count;
@@ -33,6 +31,9 @@ public class Record extends Date{
     @JoinColumn(name = "user_id")
     private User user;
 
+    public void setWeight(Double weight) { this.weight = weight;};
+    public void setSetNum(Long setNum) { this.setNum = setNum;};
+    public void setCount(Long count) { this.count = count;};
     public void setWorkout(Workout workout) {
         this.workout = workout;
     }
