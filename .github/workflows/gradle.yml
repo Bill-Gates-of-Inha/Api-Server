@@ -7,8 +7,10 @@ env:
   S3_BUCKET_NAME: sukstar76
   PROJECT_NAME: bill-gates
   APPLICATION_SECRET: ${{ secrets.APPLICATION_SECRET}}
+  APPLICATION_ALPHA_SECRET: ${{ secrets.APPLICATION_ALPHA_SECRET}}
   APPLICATION_SECRET_DIR: src/main/resources
   APPLICATION_SECRET_FILENAME: application.properties
+  APPLICATION_ALPAH_SECRET_FILENAME: application-alpha.properties
 
 jobs:
   build:
@@ -26,6 +28,9 @@ jobs:
           
       - name: Copy secret
         run: echo $APPLICATION_SECRET | base64 --decode > $APPLICATION_SECRET_DIR/$APPLICATION_SECRET_FILENAME
+
+      - name: Copy alpha secret
+        run: echo $APPLICATION_ALPHA_SECRET | base64 --decode > $APPLICATION_SECRET_DIR/$APPLICATION_SECRET_FILENAME
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
