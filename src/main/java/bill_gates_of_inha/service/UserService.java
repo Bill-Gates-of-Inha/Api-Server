@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.HashMap;
 
 @Service
 @Transactional
@@ -23,5 +24,19 @@ public class UserService {
         User user = userRepository.findByUserId(userId).orElseThrow(UserException.NotFoundUser::new);
 
         return UserDto.User.toDto(user);
+    }
+
+    public void updateProfile(String userId, UserDto.Update req) {
+        User user = userRepository.findByUserId(userId).orElseThrow(UserException.NotFoundUser::new);
+        HashMap<String, String> updateMap = new HashMap<>();
+
+        if(req.getName() != null) {
+            updateMap.put("name", req.getName());
+        }
+        if(req.getAddress() != null) {
+            updateMap.put("address", req.getAddress());
+        }
+
+        userRepository.update(user, updateMap);
     }
 }

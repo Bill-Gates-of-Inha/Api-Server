@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,5 +34,14 @@ public class UserRepository {
         em.persist(user);
 
         return Optional.ofNullable(user);
+    }
+
+    public void update(User user, HashMap<String, String> map) {
+        if(map.containsKey("name")) {
+            user.setName(map.get("name"));
+        }
+        if(map.containsKey("address")) {
+            user.setAddress(map.get("address"));
+        }
     }
 }

@@ -29,7 +29,7 @@ public class RecordRepository {
         return Optional.ofNullable(record);
     }
 
-    public Optional<Record> findById(String id) {
+    public Optional<Record> findById(Long id) {
         Record record = em.find(Record.class, id);
 
         return Optional.ofNullable(record);
@@ -54,7 +54,7 @@ public class RecordRepository {
 
         return em.createQuery("select r from Record r" +
                 " join fetch r.workout" +
-                " where r.user.id = :userId and (:startDate is null or r.createdAt >= :startDate) and (:endDate is null or r.createdAt <= :endDate)" +
+                " where r.user.userId = :userId and (:startDate is null or r.createdAt >= :startDate) and (:endDate is null or r.createdAt <= :endDate)" +
                 " order by r.createdAt", Record.class)
                 .setParameter("userId", userId)
                 .setParameter("startDate", startDate)

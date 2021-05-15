@@ -32,7 +32,7 @@ public class RecordController {
     }
 
     @PatchMapping("/api/records/{id}")
-    public ResponseDto.Ok updateRecord(@PathVariable("id") String id, @RequestBody RecordDto.Update req) {
+    public ResponseDto.Ok updateRecord(@PathVariable("id") Long id, @RequestBody RecordDto.Update req) {
         recordService.updateRecord(id, req);
         RecordDto.Record recordDto = recordService.getRecordById(id);
 

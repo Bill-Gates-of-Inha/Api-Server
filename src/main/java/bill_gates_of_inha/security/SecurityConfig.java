@@ -16,11 +16,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
     @Override
-    public void configure(WebSecurity webSecurity) {
-        webSecurity.ignoring().antMatchers("/img/**");
-    }
-
-    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .httpBasic().disable()

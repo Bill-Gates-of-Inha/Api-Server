@@ -45,13 +45,13 @@ public class RecordService {
         return RecordDto.Record.toDto(savedRecord);
     }
 
-    public RecordDto.Record getRecordById(String id) {
+    public RecordDto.Record getRecordById(Long id) {
         Record record = recordRepository.findById(id).orElseThrow(RecordException.NotFound::new);
 
         return RecordDto.Record.toDto(record);
     }
 
-    public void updateRecord(String id, RecordDto.Update req) {
+    public void updateRecord(Long id, RecordDto.Update req) {
         Record record = recordRepository.findById(id).orElseThrow(RecordException.NotFound::new);
 
         HashMap<String, Object> updateMap = new HashMap<>();

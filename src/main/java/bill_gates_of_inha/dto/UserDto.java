@@ -48,6 +48,15 @@ public class UserDto {
     @NoArgsConstructor
     @Builder
     @Getter
+    public static class Update {
+        private String name;
+        private String address;
+    }
+
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    @Getter
     public static class SignIn {
         private String userId;
         private String password;

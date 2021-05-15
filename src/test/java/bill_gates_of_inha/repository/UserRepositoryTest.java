@@ -13,6 +13,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.util.HashMap;
 
 @ActiveProfiles(value = "test")
 @ExtendWith(SpringExtension.class)
@@ -48,5 +49,19 @@ class UserRepositoryTest {
         Assertions.assertEquals(passwordEncoder.matches("1234", fu.getPassword()), true);
     }
 
+    @Test
+    void 회원수정() {
+        User user = User.builder().userId("123").name("123").password(passwordEncoder.encode("1234")).build();
+        User u = userRepository.save(user).get();
+        HashMap<String,String> map = new HashMap<>();
+        map.put("address", "포항시 남구 연일읍");
+        map.put("name", "피수용");
+        userRepository.update(u, map);
+        em.flush();
+        em.clear();
 
+        User fu = userRepository.findByUserId(u.getUserId()).get();
+        Assertions.assertEquals(fu.getAddress(), "포항시 남구 연일읍");
+        Assertions.assertEquals(fu.getName(), "피수용");
+    }
 }
