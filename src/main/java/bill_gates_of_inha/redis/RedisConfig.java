@@ -17,6 +17,8 @@ public class RedisConfig {
     private String password;
     @Value("${spring.redis.port}")
     private int port;
+    @Value("${spring.profiles.active}")
+    private String profile;
 
 
     @Bean(name = "tokenRedisConnectionFactory")
@@ -47,6 +49,10 @@ public class RedisConfig {
         StringRedisTemplate redisTemplate = new StringRedisTemplate();
         redisTemplate.setConnectionFactory(tokenRedisConnectionFactory);
 
+        if(!profile.equals("production")) {
+            redisTemplate.getConnectionFactory().getConnection().flushAll();
+        }
+
         return redisTemplate;
     }
 
@@ -54,6 +60,10 @@ public class RedisConfig {
     public StringRedisTemplate rankingRedisTemplate(@Qualifier(value = "rankingRedisConnectionFactory") LettuceConnectionFactory rankingRedisConnectionFactory) {
         StringRedisTemplate redisTemplate = new StringRedisTemplate();
         redisTemplate.setConnectionFactory(rankingRedisConnectionFactory);
+
+        if(!profile.equals("production")) {
+            redisTemplate.getConnectionFactory().getConnection().flushAll();
+        }
 
         return redisTemplate;
     }
