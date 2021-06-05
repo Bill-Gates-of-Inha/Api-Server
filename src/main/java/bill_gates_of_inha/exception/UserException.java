@@ -21,4 +21,10 @@ public class UserException {
             super(HttpStatus.UNAUTHORIZED, "잘못된 비밀번호입니다.");
         }
     }
+
+    public static class NotFoundUserAddress  extends ResponseStatusException {
+        public NotFoundUserAddress() {
+            super(HttpStatus.NOT_FOUND, "주소가 존재하지 않습니다.");
+        }
+    }
 }

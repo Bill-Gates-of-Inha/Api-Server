@@ -53,7 +53,7 @@ class UserRepositoryTest {
     void 회원수정() {
         User user = User.builder().userId("123").name("123").password(passwordEncoder.encode("1234")).build();
         User u = userRepository.save(user).get();
-        HashMap<String,String> map = new HashMap<>();
+        HashMap<String,Object> map = new HashMap<>();
         map.put("address", "포항시 남구 연일읍");
         map.put("name", "피수용");
         userRepository.update(u, map);

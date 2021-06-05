@@ -24,8 +24,9 @@ public class AuthService implements UserDetailsService {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
+
     public UserDto.SignUpResult signUp(UserDto.Creation req) {
-        if(userRepository.findByUserId(req.getUserId()).isPresent()) {
+        if (userRepository.findByUserId(req.getUserId()).isPresent()) {
             throw new UserException.Reduplication();
         }
 
@@ -51,7 +52,7 @@ public class AuthService implements UserDetailsService {
     }
 
     public void comparePassword(String password, String savedPassword) {
-        if(!passwordEncoder.matches(password, savedPassword)) {
+        if (!passwordEncoder.matches(password, savedPassword)) {
             throw new UserException.WrongPassword();
         }
     }

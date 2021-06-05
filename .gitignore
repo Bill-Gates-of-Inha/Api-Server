@@ -6,6 +6,7 @@ build/
 !**/src/test/**/build/
 src/main/resources/application.properties
 src/main/resources/application-alpha.properties
+src/main/resources/application-beta.properties
 output**.b64
 
 ### STS ###

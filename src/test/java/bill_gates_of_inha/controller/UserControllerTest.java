@@ -84,4 +84,21 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.status").value("OK"))
                 .andExpect(jsonPath("$.code").value("200"));
     }
+
+    @Test
+    void 스코어업데이트() throws Exception {
+        User u = User.builder().name("test").address("test").password("test").userId("test").build();
+        u = userRepository.save(u).get();
+
+        mvc.perform(patch("/api/users/" + u.getUserId() +"/"+10d)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.userId").value(u.getUserId()))
+                .andExpect(jsonPath("$.data.name").value(u.getName()))
+                .andExpect(jsonPath("$.data.address").value("test"))
+                .andExpect(jsonPath("$.data.score").value(10d))
+                .andExpect(jsonPath("$.status").value("OK"))
+                .andExpect(jsonPath("$.code").value("200"));
+    }
 }

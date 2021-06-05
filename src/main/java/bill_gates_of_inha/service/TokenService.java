@@ -36,11 +36,11 @@ public class TokenService {
         String accessToken = req.getAccessToken();
         String refreshToken = req.getRefreshToken();
 
-        if(!tokenRepository.get(accessToken).equals(refreshToken)) {
+        if (!tokenRepository.get(accessToken).equals(refreshToken)) {
             throw new TokenException.Conflict();
         }
 
-        if(!jwtProvider.validateToken(refreshToken)) {
+        if (!jwtProvider.validateToken(refreshToken)) {
             throw new TokenException.Expired();
         }
 

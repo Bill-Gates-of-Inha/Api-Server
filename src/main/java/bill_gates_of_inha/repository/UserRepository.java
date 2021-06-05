@@ -36,12 +36,15 @@ public class UserRepository {
         return Optional.ofNullable(user);
     }
 
-    public void update(User user, HashMap<String, String> map) {
+    public void update(User user, HashMap<String, Object> map) {
         if(map.containsKey("name")) {
-            user.setName(map.get("name"));
+            user.setName((String)map.get("name"));
         }
         if(map.containsKey("address")) {
-            user.setAddress(map.get("address"));
+            user.setAddress((String)map.get("address"));
+        }
+        if(map.containsKey("score")) {
+            user.setScore((Double)map.get("score"));
         }
     }
 }

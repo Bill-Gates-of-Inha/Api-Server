@@ -29,8 +29,6 @@ public class FoodDto {
                     .carbohydrate(food.getCarbohydrate())
                     .protein(food.getProtein())
                     .fat(food.getFat())
-                    .sugars(food.getSugars())
-                    .salts(food.getSalts())
                     .build();
         }
     }

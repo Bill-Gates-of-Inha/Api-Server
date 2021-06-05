@@ -29,8 +29,6 @@ public class Food extends Date {
     private Double protein;
     @Column(nullable = false)
     private Double fat;
-    @Column(nullable = false)
     private Double sugars;
-    @Column(nullable = false)
     private Double salts;
 }

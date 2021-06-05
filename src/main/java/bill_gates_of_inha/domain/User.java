@@ -30,6 +30,7 @@ public class User extends Date implements UserDetails {
     @Column(nullable=false)
     private String password;
     private String address;
+    private Double score;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
@@ -66,12 +67,13 @@ public class User extends Date implements UserDetails {
     public void setAddress(String address) {
         this.address = address;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public void setPassword(String password) {
         this.password = password;
+    }
+    public void setScore(Double score) {
+        this.score = score;
     }
 }

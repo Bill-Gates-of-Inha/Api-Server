@@ -19,10 +19,6 @@ public class RankingService {
         this.rankingRepository = rankingRepository;
     }
 
-    public void addUserNameAndScoreByUserName() {
-        //정해지면 만들기
-    }
-
     public List<RankingDto.Ranking> getRankingListByAddress(String address) {
         Set<ZSetOperations.TypedTuple<String>> valueWithScoreSet = rankingRepository.getValueWithScoreByAddress(address);
 

@@ -55,17 +55,17 @@ public class RecordService {
         Record record = recordRepository.findById(id).orElseThrow(RecordException.NotFound::new);
 
         HashMap<String, Object> updateMap = new HashMap<>();
-        if(req.getWeight() != null) {
+        if (req.getWeight() != null) {
             updateMap.put("weight", req.getWeight());
         }
-        if(req.getCount() != null) {
+        if (req.getCount() != null) {
             updateMap.put("count", req.getCount());
         }
-        if(req.getSetNum() != null) {
+        if (req.getSetNum() != null) {
             updateMap.put("setNum", req.getSetNum());
 
         }
-        if(req.getWorkoutId() != null) {
+        if (req.getWorkoutId() != null) {
             Workout workout = workoutRepository.findById(req.getWorkoutId()).orElseThrow(WorkoutException.NotFound::new);
             updateMap.put("workout", workout);
         }
@@ -74,10 +74,10 @@ public class RecordService {
     }
 
     public List<RecordDto.Record> getRecordListByUserIdByDate(String userId, RecordDto.FilterForDate req) {
-        LocalDateTime startDate = req.getStartDate() == null ? null :LocalDateTime.parse(req.getStartDate() + " 00:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        LocalDateTime startDate = req.getStartDate() == null ? null : LocalDateTime.parse(req.getStartDate() + " 00:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         LocalDateTime endDate = req.getEndDate() == null ? null : LocalDateTime.parse(req.getEndDate() + " 00:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         List<Record> records = recordRepository.findByUserIdByDate(userId, startDate, endDate);
 
-        return records.stream().map(r-> RecordDto.Record.toDto(r)).collect(Collectors.toList());
+        return records.stream().map(r -> RecordDto.Record.toDto(r)).collect(Collectors.toList());
     }
 }

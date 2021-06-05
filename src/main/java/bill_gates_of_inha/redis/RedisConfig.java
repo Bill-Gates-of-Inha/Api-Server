@@ -17,7 +17,7 @@ public class RedisConfig {
     private String password;
     @Value("${spring.redis.port}")
     private int port;
-    @Value("${spring.profiles.active}")
+    @Value("${profile}")
     private String profile;
 
 
@@ -49,7 +49,7 @@ public class RedisConfig {
         StringRedisTemplate redisTemplate = new StringRedisTemplate();
         redisTemplate.setConnectionFactory(tokenRedisConnectionFactory);
 
-        if(!profile.equals("production")) {
+        if(!profile.equals("production") || !profile.equals("heroku")) {
             redisTemplate.getConnectionFactory().getConnection().flushAll();
         }
 
@@ -61,7 +61,7 @@ public class RedisConfig {
         StringRedisTemplate redisTemplate = new StringRedisTemplate();
         redisTemplate.setConnectionFactory(rankingRedisConnectionFactory);
 
-        if(!profile.equals("production")) {
+        if(!profile.equals("production") || !profile.equals("heroku")) {
             redisTemplate.getConnectionFactory().getConnection().flushAll();
         }
 

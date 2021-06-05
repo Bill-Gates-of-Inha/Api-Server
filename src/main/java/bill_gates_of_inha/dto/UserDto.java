@@ -15,6 +15,7 @@ public class UserDto {
         private String userId;
         private String name;
         private String address;
+        private Double score;
 
         public static User toDto(bill_gates_of_inha.domain.User user) {
 
@@ -23,6 +24,7 @@ public class UserDto {
                     .userId(user.getUserId())
                     .name(user.getName())
                     .address(user.getAddress())
+                    .score(user.getScore())
                     .build();
         }
     }
@@ -51,6 +53,7 @@ public class UserDto {
     public static class Update {
         private String name;
         private String address;
+        private Double score;
     }
 
     @AllArgsConstructor

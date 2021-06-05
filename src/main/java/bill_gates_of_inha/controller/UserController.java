@@ -29,4 +29,12 @@ public class UserController {
 
         return new ResponseDto.Ok(userDto, "사용자 정보 업데이트");
     }
+
+    @PatchMapping("/api/users/{userId}/{score}")
+    public ResponseDto.Ok updateScoreByUserId(@PathVariable("userId") String userId, @PathVariable("score") Double score) {
+        userService.updateScoreByUserId(userId, score);
+        UserDto.User userDto = userService.getProfileByUserId(userId);
+
+        return new ResponseDto.Ok(userDto, "사용자 정보 업데이트");
+    }
 }
